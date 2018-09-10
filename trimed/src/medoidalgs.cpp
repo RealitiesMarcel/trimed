@@ -163,9 +163,10 @@ void trimed(Data &data, TFloat &min_E, size_t &min_E_i) {
 
       // update the lower bounds for all samples using the N distances computed
       // to sample i.
-      for (size_t ip = i + 1; ip < data.ndata; ++ip) {
-        lowers[ip] = std::max<TFloat>(
-            lowers[ip], std::abs(data.ndata * distances[ip] - E_i));
+      for (size_t ip = io + 1; ip < data.ndata; ++ip) {
+		i = up_visiting_order[ ip ];
+        lowers[i] = std::max<TFloat>(
+            lowers[i], std::abs(data.ndata * distances[i] - E_i));
       }
 
     }
